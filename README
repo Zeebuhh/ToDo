@@ -1,0 +1,24 @@
+# Advanced To-Do App
+
+## Projektbeschreibung
+
+Dies ist eine erweiterte To-Do-App, die als Fullstack-Projekt mit Java und React entwickelt wird. Das Projekt soll als Portfolio dienen und zeigen, welche Fähigkeiten ich als Fullstack-Entwickler habe. Ziel ist es, eine vollständige Anwendung zu erstellen, die auch Authentifizierung, Teamarbeit und erweitertes Aufgabenmanagement unterstützt.
+
+## Technologien
+
+- Java (Spring Boot)
+- React
+- MySQL
+- REST API
+- Netlify (für Deployment)
+- Git & GitHub
+
+## Installation
+
+Um das Projekt zu klonen, führe folgenden Befehl aus:
+
+```bash
+git clone <repo-url>
+```
+
+Weitere Anweisungen zur Installation und Ausführung der Anwendung folgen, sobald das Projekt wächst.
