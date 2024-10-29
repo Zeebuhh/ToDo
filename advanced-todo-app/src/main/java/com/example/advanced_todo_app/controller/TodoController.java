@@ -1,5 +1,6 @@
 package com.example.advanced_todo_app.controller;
 
+import com.example.advanced_todo_app.exceptions.ResourceNotFoundException;
 import com.example.advanced_todo_app.model.Todo;
 import com.example.advanced_todo_app.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/todos")
+@CrossOrigin(origins = "http://localhost:3000")
 public class TodoController {
 
     private final TodoRepository todoRepository;
@@ -25,8 +27,9 @@ public class TodoController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Todo> findTodoById(@PathVariable Long id){
-        return todoRepository.findById(id);
+    public Todo getTodoById(@PathVariable Long id){
+        return todoRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Todo with Id " + id + " not found"));
     }
 
     @PostMapping
@@ -35,13 +38,18 @@ public class TodoController {
     }
 
     @PutMapping("/{id}")
-    public Todo udateTodo(@PathVariable Long id, @RequestBody Todo todo){
-        todo.setId(id);
-        return todoRepository.save(todo);
+    public Todo updateTodo(@PathVariable Long id, @RequestBody Todo todo){
+        Todo existingTodo = todoRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Todo with Id " + id + " not found"));
+        existingTodo.setTitle(todo.getTitle());
+        existingTodo.setDescription(todo.getDescription());
+        return todoRepository.save(existingTodo);
     }
+
 
     @DeleteMapping("/{id}")
     public void deleteTodo(@PathVariable Long id){
+        todoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Todo with Id " + id + " not found"));
         todoRepository.deleteById(id);
     }
 
