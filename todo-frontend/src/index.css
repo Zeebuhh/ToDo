@@ -1,13 +1,5 @@
 body {
   margin: 0;
-
-  /* PROVISORISCHE EINFÜGUNG */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  /*  */
-
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -18,4 +10,41 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.todo {
+  width: 80%;
+  margin: 10px auto;
+  padding: 5px;
+  border: 2px solid lightblue;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.AddTodo {
+  margin: 0 auto;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
+
+.AddTodo input {
+  width: 80%;
+  height: ;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.AddTodo button {
+  width: 10rem;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.AddTodo input::placeholder {
+  color: rgb(199, 191, 191);
 }

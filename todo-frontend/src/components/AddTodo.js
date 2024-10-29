@@ -5,7 +5,9 @@ const AddTodo = ({ addTodo }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-  function handleAddTodo() {
+  function handleAddTodo(e) {
+    e.preventDefault();
+
     const newTodo = {
       title: title,
       description: description,
@@ -32,7 +34,7 @@ const AddTodo = ({ addTodo }) => {
   }
 
   return (
-    <div className="AddTodo">
+    <form className="AddTodo" onSubmit={handleAddTodo}>
       <label htmlFor="title">Title:</label>
       <input
         type="text"
@@ -40,6 +42,7 @@ const AddTodo = ({ addTodo }) => {
         required
         onChange={(e) => setTitle(e.target.value)}
         value={title}
+        placeholder="Feed the cat"
       ></input>
 
       <label htmlFor="description">Description:</label>
@@ -48,12 +51,13 @@ const AddTodo = ({ addTodo }) => {
         id="description"
         onChange={(e) => setDescription(e.target.value)}
         value={description}
+        placeholder="...feed tuna and fill up the water too."
       ></input>
 
-      <button id="add-todo-btn" onClick={handleAddTodo}>
+      <button type="submit" id="add-todo-btn">
         Add
       </button>
-    </div>
+    </form>
   );
 };
 
